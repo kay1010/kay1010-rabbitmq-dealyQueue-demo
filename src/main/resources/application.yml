@@ -1,0 +1,38 @@
+server:
+  ssl:
+    key-alias: test2
+    key-store: classpath:test.keystore
+    key-store-password: 123456
+    key-store-type: jks
+  port: 8066
+  servlet:
+    context-path: /test
+swagger:
+  enable: true
+  application-name: ${spring.application.name}
+  application-version: 1.0
+  application-description: springfox swagger 3.0整合Demo
+  try-host: http://localhost:${server.port}
+management:
+  endpoints:
+    enabled-by-default: false
+#    web:
+#      exposure:
+#        include: "*"  #开启全部监控端点
+#      base-path: / #自定义监控根路径（/actuator 改为/）
+  endpoint:
+    health:
+      show-details: always #health端点显示具体信息
+spring:
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+    listener:
+      simple:
+        prefetch: 1
+        concurrency: 5
+        max-concurrency: 10
+mq:
+  delay-consumerQueue: dead.real.queue
